@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire aléatoire</title>
+    <style>
+        body {
+            background: black;
+            font-family: Helvetica, sans-serif;
+            color: whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            width: 80%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .Question {
+            color: yellow; /* couleur du texte pour les questions */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Réponds à la question pour avoir un point !</h1>
+
+        <form id="questionForm">
+            <!-- Question 1 -->
+            <div class="question hidden" id="question1">
+                <p id="com_resultat1"></p>
+
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Pourquoi s'échauffer avant la musculation?<br>
+                    <input type="radio" name="choix1" value="0" onclick='checkAnswer(1, this.value)'>Afin de ne pas avoir froid<br>
+                    <input type="radio" name="choix1" value="0" onclick='checkAnswer(1, this.value)'>Afin de ne pas risquer de perdre encore plus de muscles!<br>
+                    <input type="radio" name="choix1" value="0" onclick='checkAnswer(1, this.value)'>Afin de faire des exercices en plus<br>
+                    <input type="radio" name="choix1" value="1" onclick='checkAnswer(1, this.value)'>Afin de ne pas risquer un placage<br>
+                </p>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question hidden" id="question2">
+                <p id="com_resultat2"></p>
+
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Combien de temps doit durer l'échauffement?<br>
+                    <input type="radio" name="choix2" value="0" onclick='checkAnswer(2, this.value)'>2 jours<br>
+                    <input type="radio" name="choix2" value="0" onclick='checkAnswer(2, this.value)'>1 heure<br>
+                    <input type="radio" name="choix2" value="1" onclick='checkAnswer(2, this.value)'>15 minutes<br>
+                    <input type="radio" name="choix2" value="0" onclick='checkAnswer(2, this.value)'>2 minutes<br>
+                </p>
+            </div>
+            <!-- Question 3 -->
+            <div class="question hidden" id="question3">
+                <p id="com_resultat3"></p>
+
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Pour maintenir une bonne santé, pendant combien de temps doit-on faire du sport?<br>
+                    <input type="radio" name="choix3" value="0" onclick='checkAnswer(3, this.value)'>2 minutes<br>
+                    <input type="radio" name="choix3" value="0" onclick='checkAnswer(3, this.value)'>4 heures<br>
+                    <input type="radio" name="choix3" value="0" onclick='checkAnswer(3, this.value)'>1 heure<br>
+                    <input type="radio" name="choix3" value="1" onclick='checkAnswer(3, this.value)'>30 minutes<br>
+                </p>
+            </div>
+            <!-- Question 4 -->
+            <div class="question hidden" id="question4">
+                <p id="com_resultat4"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quel est le symbole des Jeux Olympiques?<br>
+                    <input type="radio" name="choix4" value="0" onclick='checkAnswer(4, this.value)'>Une torche <br>
+                    <input type="radio" name="choix4" value="0" onclick='checkAnswer(4, this.value)'>Une médaille<br>
+                    <input type="radio" name="choix4" value="0" onclick='checkAnswer(4, this.value)'>Une couronne de laurier<br>
+                    <input type="radio" name="choix4" value="1" onclick='checkAnswer(4, this.value)'>Un drapeau<br>
+                </p>
+            </div>
+            <!-- Question 5 -->
+            <div class="question hidden" id="question5">
+                <p id="com_resultat5"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Combien y a-t-il d'anneaux dans le symbole olympique?<br>
+                    <input type="radio" name="choix5" value="0" onclick='checkAnswer(5, this.value)'>2<br>
+                    <input type="radio" name="choix5" value="0" onclick='checkAnswer(5, this.value)'>3<br>
+                    <input type="radio" name="choix5" value="0" onclick='checkAnswer(5, this.value)'>4<br>
+                    <input type="radio" name="choix5" value="1" onclick='checkAnswer(5, this.value)'>5<br>
+                </p>
+            </div>
+            <!-- Question 6 -->
+            <div class="question hidden" id="question6">
+                <p id="com_resultat6"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quelle ville a accueilli les Jeux olympiques d'été à trois reprises?<br>
+                    <input type="radio" name="choix6" value="0" onclick='checkAnswer(6, this.value)'>Tokyo<br>
+                    <input type="radio" name="choix6" value="1" onclick='checkAnswer(6, this.value)'>Londres<br>
+                    <input type="radio" name="choix6" value="0" onclick='checkAnswer(6, this.value)'>Pékin<br>
+                    <input type="radio" name="choix6" value="0" onclick='checkAnswer(6, this.value)'>Rio de Janeiro<br>
+                </p>
+            </div>
+            <!-- Question 7 -->
+            <div class="question hidden" id="question7">
+                <p id="com_resultat7"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quel était le premier sport? <br>
+                    <input type="radio" name="choix7" value="1" onclick='checkAnswer(7, this.value)'>Lutte<br>
+                    <input type="radio" name="choix7" value="0" onclick='checkAnswer(7, this.value)'>Football<br>
+                    <input type="radio" name="choix7" value="0" onclick='checkAnswer(7, this.value)'>Badminton<br>
+                    <input type="radio" name="choix7" value="0" onclick='checkAnswer(7, this.value)'>Tennis<br>
+                </p>
+            </div>
+            <!-- Question 8 -->
+            <div class="question hidden" id="question8">
+                <p id="com_resultat8"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Combien de fois Paris a été la ville hôte des JO en incluant les jeux de 2024? <br>
+                    <input type="radio" name="choix8" value="0" onclick='checkAnswer(8, this.value)'>2<br>
+                    <input type="radio" name="choix8" value="1" onclick='checkAnswer(8, this.value)'>3<br>
+                    <input type="radio" name="choix8" value="0" onclick='checkAnswer(8, this.value)'>4<br>
+                    <input type="radio" name="choix8" value="0" onclick='checkAnswer(8, this.value)'>5<br>
+                </p>
+            </div>
+            <!-- Question 9 -->
+            <div class="question hidden" id="question9">
+                <p id="com_resultat9"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>A partir de quelle année les femmes ont-elles pu participer aux Jeux Olympiques?<br>
+                    <input type="radio" name="choix9" value="1" onclick='checkAnswer(9, this.value)'>1900<br>
+                    <input type="radio" name="choix9" value="0" onclick='checkAnswer(9, this.value)'>1916<br>
+                    <input type="radio" name="choix9" value="0" onclick='checkAnswer(9, this.value)'>1922<br>
+                    <input type="radio" name="choix9" value="0" onclick='checkAnswer(9, this.value)'>1938<br>
+                </p>
+            </div>
+            <!-- Question 10 -->
+            <div class="question hidden" id="question10">
+                <p id="com_resultat10"></p>
+            <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question  :</b><br>De combien de joueurs se compose une équipe de Football? <br>
+                    <input type="radio" name="choix10" value="0" onclick='checkAnswer(10, this.value)'>15<br>
+                    <input type="radio" name="choix10" value="0" onclick='checkAnswer(10, this.value)'>10<br>
+                    <input type="radio" name="choix10" value="1" onclick='checkAnswer(10, this.value)'>11<br>
+                    <input type="radio" name="choix10" value="0" onclick='checkAnswer(10, this.value)'>20<br>
+                </p>
+            </div>
+            <!-- Question 11 -->
+            <div class="question hidden" id="question11">
+                <p id="com_resultat11"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Combien de joueurs composent une équipe de rugby? <br>
+                    <input type="radio" name="choix11" value="0" onclick='checkAnswer(11, this.value)'>11<br>
+                    <input type="radio" name="choix11" value="0" onclick='checkAnswer(11, this.value)'>15<br>
+                    <input type="radio" name="choix11" value="0" onclick='checkAnswer(11, this.value)'>20<br>
+                    <input type="radio" name="choix11" value="0" onclick='checkAnswer(11, this.value)'>30<br>
+                </p>
+            </div>
+            <!-- Question 12 -->
+            <div class="question hidden" id="question12">
+                <p id="com_resultat12"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quand a eu lieu la première Coupe du monde de foot? <br>
+                    <input type="radio" name="choix12" value="0" onclick='checkAnswer(12, this.value)'>1950<br>
+                    <input type="radio" name="choix12" value="0" onclick='checkAnswer(12, this.value)'>1900<br>
+                    <input type="radio" name="choix12" value="0" onclick='checkAnswer(12, this.value)'>1910<br>
+                    <input type="radio" name="choix12" value="1" onclick='checkAnswer(12, this.value)'>1930<br>
+                </p>
+            </div>
+            <!-- Question 13 -->
+            <div class="question hidden" id="question13">
+                <p id="com_resultat13"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>De quelles couleurs est le maillot de l'Atletico de Madrid? <br>
+                    <input type="radio" name="choix13" value="0" onclick='checkAnswer(13, this.value)'>noir et blanc<br>
+                    <input type="radio" name="choix13" value="0" onclick='checkAnswer(13, this.value)'>rouge et orange<br>
+                    <input type="radio" name="choix13" value="1" onclick='checkAnswer(13, this.value)'>rouge et blanc<br>
+                    <input type="radio" name="choix13" value="0" onclick='checkAnswer(13, this.value)'>bleu et blanc<br>
+                </p>
+            </div>
+            <!-- Question 14 -->
+            <div class="question hidden" id="question14">
+                <p id="com_resultat14"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>En quelle année le joueur de foot Kylian Mbappe est-il né? <br>
+                    <input type="radio" name="choix14" value="0" onclick='checkAnswer(14, this.value)'>1994<br>
+                    <input type="radio" name="choix14" value="0" onclick='checkAnswer(14, this.value)'>1996<br>
+                    <input type="radio" name="choix14" value="1" onclick='checkAnswer(14, this.value)'>1998<br>
+                    <input type="radio" name="choix14" value="0" onclick='checkAnswer(14, this.value)'>2000<br>
+                </p>
+            </div>
+            <!-- Question 15 -->
+            <div class="question hidden" id="question15">
+                <p id="com_resultat15"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>En quelle année Kylian Mbappe a-t-il rejoint le club du Paris Saint-Germain? <br>
+                    <input type="radio" name="choix15" value="0" onclick='checkAnswer(15, this.value)'>2015<br>
+                    <input type="radio" name="choiX15" value="1" onclick='checkAnswer(15, this.value)'>2017<br>
+                    <input type="radio" name="choix15" value="0" onclick='checkAnswer(15, this.value)'>2019<br>
+                    <input type="radio" name="choix15" value="0" onclick='checkAnswer(15, this.value)'>2021<br>
+                </p>
+            </div>
+            <!-- Question 16 -->
+            <div class="question hidden" id="question16">
+                <p id="com_resultat16"></p>                
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Où se sont déroulés les Jeux Olympiques de 2018? <br>
+                    <input type="radio" name="choix16" value="1" onclick='checkAnswer(16, this.value)'>PyeongChang<br>
+                    <input type="radio" name="choix16" value="0" onclick='checkAnswer(16, this.value)'>Moscou<br>
+                    <input type="radio" name="choix16" value="0" onclick='checkAnswer(16, this.value)'>Vancouver<br>
+                    <input type="radio" name="choix16" value="0" onclick='checkAnswer(16, this.value)'>Turin<br>
+                </p>
+            </div>
+            <!-- Question 17 -->
+            <div class="question hidden" id="question17">
+                <p id="com_resultat17"></p>
+                   <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quel athlète possède le plus de médailles d'or aux Jeux Olympiques? <br>
+                    <input type="radio" name="choix17" value="0" onclick='checkAnswer(17, this.value)'>Usain Bolt<br>
+                    <input type="radio" name="choix17" value="1" onclick='checkAnswer(17, this.value)'>Michael Phelps<br>
+                    <input type="radio" name="choix17" value="0" onclick='checkAnswer(17, this.value)'>Carl Lewis<br>
+                    <input type="radio" name="choix17" value="0" onclick='checkAnswer(17, this.value)'>Marie-José Perec<br>
+                </p>
+            </div>
+            <!-- Question 18 -->
+            <div class="question hidden" id="question18">
+                <p id="com_resultat18"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quel pays organise les Jeux Olympiques d'été de 2028? <br>
+                    <input type="radio" name="choix18" value="1" onclick='checkAnswer(18, this.value)'>Etat-Unis<br>
+                    <input type="radio" name="choix18" value="0" onclick='checkAnswer(18, this.value)'>Japon<br>
+                    <input type="radio" name="choix18" value="0" onclick='checkAnswer(18, this.value)'>Russie<br>
+                    <input type="radio" name="choix18" value="0" onclick='checkAnswer(18, this.value)'>Arabie Saoudite<br>
+                </p>
+            </div>
+            <!-- Question 19 -->
+            <div class="question hidden" id="question19">
+                <p id="com_resultat19"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>En quelle année se sont deroulées les premiers Jeux Paralympiques? <br>
+                    <input type="radio" name="choix19" value="0" onclick='checkAnswer(19, this.value)'>1950<br>
+                    <input type="radio" name="choix19" value="1" onclick='checkAnswer(19, this.value)'>1960<br>
+                    <input type="radio" name="choix19" value="0" onclick='checkAnswer(19, this.value)'>1970<br>
+                    <input type="radio" name="choix19" value="0" onclick='checkAnswer(19, this.value)'>1980<br>
+                </p>
+            </div>
+            <!-- Question 20 -->
+            <div class="question hidden" id="question20">
+                <p id="com_resultat20"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Qui est le fondateur des Jeux Olympiques modernes en 1894? <br>
+                    <input type="radio" name="choix20" value="1" onclick='checkAnswer(20, this.value)'>Pierre de Coubertin<br>
+                    <input type="radio" name="choix20" value="0" onclick='checkAnswer(20, this.value)'>Demetrius Vikelas<br>
+                    <input type="radio" name="choix20" value="0" onclick='checkAnswer(20, this.value)'>Godefroy de Blonay<br>
+                    <input type="radio" name="choix20" value="0" onclick='checkAnswer(20, this.value)'>Marie Rothan<br>
+                </p>
+            </div>
+            <!-- Question 21 -->
+            <div class="question hidden" id="question21">
+                <p id="com_resultat21"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Comment s'échauffer avant la musculation? <br>
+                    <input type="radio" name="choix21" value="1" onclick='checkAnswer(21, this.value)'>En faisant des squats<br>
+                    <input type="radio" name="choix21" value="0" onclick='checkAnswer(21, this.value)'>En sautant sur un pied<br>
+                    <input type="radio" name="choix21" value="0" onclick='checkAnswer(21, this.value)'>En marchant<br>
+                    <input type="radio" name="choix21" value="0" onclick='checkAnswer(21, this.value)'>En jouant à Fortnite<br>
+                </p>
+            </div>
+            <!-- Question 22 -->
+            <div class="question hidden" id="question22">
+                <p id="com_resultat22"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Pourquoi faire des étirements à la fin d'une séance? <br>
+                    <input type="radio" name="choix22" value="0" onclick='checkAnswer(22, this.value)'>Parce que l'on en a envie <br>
+                    <input type="radio" name="choix22" value="0" onclick='checkAnswer(22, this.value)'>Parce que le prof dit de le faire<br>
+                    <input type="radio" name="choix22" value="0" onclick='checkAnswer(22, this.value)'>Parce que je suis dans mon lit <br>
+                    <input type="radio" name="choix22" value="1" onclick='checkAnswer(22, this.value)'>Parce que je ne veux pas de courbatures<br>
+                </p>
+            </div>
+            <!-- Question 23 -->
+            <div class="question hidden" id="question23">
+                <p id="com_resultat23"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Je peux manger tous ce que je veux pour avoir une bonne santé? <br>
+                    <input type="radio" name="choix23" value="0" onclick='checkAnswer(23, this.value)'>Manger des Hamburgers tous les jours <br>
+                    <input type="radio" name="choix23" value="0" onclick='checkAnswer(23, this.value)'>Ne pas manger<br>
+                    <input type="radio" name="choix23" value="0" onclick='checkAnswer(23, this.value)'>Ne manger que des salades<br>
+                    <input type="radio" name="choix23" value="1" onclick='checkAnswer(23, this.value)'>Manger un minimum équilibré<br>
+                </p>
+            </div>
+            <!-- Question 24 -->
+            <div class="question hidden" id="question24">
+                <p id="com_resultat24"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>A partir de quelle année les femmes ont-elles pu participer aux Jeux Olympiques? <br>
+                    <input type="radio" name="choix24" value="1" onclick='checkAnswer(24, this.value)'>1900<br>
+                    <input type="radio" name="choix24" value="0" onclick='checkAnswer(24, this.value)'>1916<br>
+                    <input type="radio" name="choix24" value="0" onclick='checkAnswer(24, this.value)'>1922<br>
+                    <input type="radio" name="choix24" value="0" onclick='checkAnswer(24, this.value)'>1938<br>
+                </p>
+            </div>
+            <!-- Question 25 -->
+            <div class="question hidden" id="question25">
+                <p id="com_resultat25"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quelle ville française n'a jamais accueilli les Jeux Olympiques? <br>
+                    <input type="radio" name="choix25" value="0" onclick='checkAnswer(25, this.value)'>Grenoble<br>
+                    <input type="radio" name="choix25" value="0" onclick='checkAnswer(25, this.value)'>Chamoix<br>
+                    <input type="radio" name="choix25" value="1" onclick='checkAnswer(25, this.value)'>Lyon<br>
+                    <input type="radio" name="choix25" value="0" onclick='checkAnswer(25, this.value)'>Albertville<br>
+                </p>
+            </div>
+            <!-- Question 26 -->
+            <div class="question hidden" id="question26">
+                <p id="com_resultat26"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quelle est l'année la plus recente où la France a été n°1 au classement général des Jeux Olympiques?<br>
+                    <input type="radio" name="choix26" value="1" onclick='checkAnswer(26, this.value)'>1900<br>
+                    <input type="radio" name="choix26" value="0" onclick='checkAnswer(26, this.value)'>1926<br>
+                    <input type="radio" name="choix26" value="0" onclick='checkAnswer(26, this.value)'>1946<br>
+                    <input type="radio" name="choix26" value="0" onclick='checkAnswer(26, this.value)'>La France n'a jamais été n°1<br>
+                </p>
+            </div>
+            <!-- Question 27 -->
+            <div class="question hidden" id="question27">
+                <p id="com_resultat27"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quelle est la devise des Jeux Olympiques introduite en 2021? <br>
+                    <input type="radio" name="choix27" value="1" onclick='checkAnswer(27, this.value)'>Plus vite, plus haut, plus fort ensemble<br>
+                    <input type="radio" name="choix27" value="0" onclick='checkAnswer(27, this.value)'>Pour la beauté du sport<br>
+                    <input type="radio" name="choix27" value="0" onclick='checkAnswer(27, this.value)'>La flamme anime les passions<br>
+                    <input type="radio" name="choix27" value="0" onclick='checkAnswer(27, this.value)'>L'important est de participer<br>
+                </p>
+            </div>
+            <!-- Question 28 -->
+            <div class="question hidden" id="question28">
+                <p id="com_resultat28"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Quel pilote de Formule 1 avait comme surnom <Le baron rouge>? <br>
+                    <input type="radio" name="choix28" value="0" onclick='checkAnswer(28, this.value)'>Fernando Alonso<br>
+                    <input type="radio" name="choix28" value="0" onclick='checkAnswer(28, this.value)'>Damon Hill<br>
+                    <input type="radio" name="choix28" value="1" onclick='checkAnswer(28, this.value)'>Michael Schumacher<br>
+                    <input type="radio" name="choix28" value="0" onclick='checkAnswer(28, this.value)'>Rubens Barrichello<br>
+                </p>
+            </div>
+            <!-- Question 29 -->
+            <div class="question hidden" id="question29">
+                <p id="com_resultat29"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Le Vooley-Ball s'inspire? <br>
+                    <input type="radio" name="choix29" value="1" onclick='checkAnswer(29, this.value)'>Du Basket-Ball et du Tennis<br>
+                    <input type="radio" name="choix29" value="0" onclick='checkAnswer(29, this.value)'>Du Football et du Basket-Ball<br>
+                    <input type="radio" name="choix29" value="0" onclick='checkAnswer(29, this.value)'>Du Handball et du Basket-Ball<br>
+                    <input type="radio" name="choix29" value="0" onclick='checkAnswer(29, this.value)'>Du Basket et du Tennis<br>
+                </p>
+            </div>
+            <!-- Question 30 -->
+            <div class="question hidden" id="question30">
+                <p id="com_resultat30"></p>
+                <p>
+                    <hr align="center" noshade="noshade">
+                    <b class="Question">Question :</b><br>Combien de médailles la Chine a-t-elle gagnées en tennis de table aux Jeux Olympiques de Pékin en 2008? <br>
+                    <input type="radio" name="choix30" value="0" onclick='checkAnswer(30, this.value)'>6<br>
+                    <input type="radio" name="choix30" value="1" onclick='checkAnswer(30, this.value)'>8<br>
+                    <input type="radio" name="choix30" value="0" onclick='checkAnswer(30, this.value)'>5<br>
+                    <input type="radio" name="choix30" value="0" onclick='checkAnswer(30, this.value)'>7<br>
+                </p>
+            </div>
+                <p align="center">
+                <input name="Submit" value="Terminer" onclick="resultat()" type="button"> 
+                <input name="Submit" value="Question suivante" onclick="shuffleQuestions();" type="button">
+            </p>
+        </form>
+
+        <a href="jeux.html">Clique ici pour continuer de jouer</a>
+    </div>
+    <script src="java.js"></script>
+    <script>
+        var score = 0;
+
+        // Fonction pour mélanger les questions
+        function shuffleQuestions() {
+            var questions = document.querySelectorAll('.question');
+            questions.forEach(function(question) {
+                question.classList.add('hidden');
+            });
+
+            var randomIndex = Math.floor(Math.random() * questions.length);
+            questions[randomIndex].classList.remove('hidden');
+        }
+
+        // Fonction pour vérifier la réponse et attribuer le score
+        function checkAnswer(questionNumber, selectedValue) {
+            // Question 1
+            if (questionNumber === 1) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if (questionNumber === 2) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 3) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 4) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 5) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 6) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 7) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 8) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 9) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 10) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 11) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 12) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 13) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 14) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 15) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 16) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 17) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 18) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 19) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 20) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 21) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 22) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 23) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 24) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 25) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 26) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 27) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 28) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 29) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+            else if(questionNumber === 30) {
+                if (selectedValue === "1") {
+                    score += 1;
+                }
+            }
+        }
+
+    
+        // Fonction pour afficher le résultat final
+        function resultat() {
+            alert("Votre score est de : "+ score+" sur 30" );
+        }
+
+        // Appeler la fonction pour mélanger les questions au chargement de la page
+        window.onload = shuffleQuestions;
+    </script>
+</body> 
+</html>

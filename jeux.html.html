@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déplacement horizontal d'un joueur dans une piste d'athlétisme</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gameBoard {
+            width: 80%;
+            height: 80vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px dotted white;            
+        }
+
+        .haie {
+            position: absolute;
+            width: 100px;
+            height: auto;
+        }
+
+        @keyframes descend {
+            from {
+                top: -9px; /* Position de départ au-dessus du carré de jeu */
+            }
+            to {
+                top: 99%; /* Position d'arrivée en bas du carré de jeu */
+            }
+        }
+        #player {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #player img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameBoard">
+        <div id="player"><img src="player.jpg" alt="Votre image"></div>
+    </div>
+
+    <script>
+        var gameBoard = document.getElementById("gameBoard");
+        var player = document.getElementById("player");
+        var playerImg = document.querySelector("#player img");
+
+        var stepSize = 20;
+
+        function moveRight() {
+            positionX += 10; // Modifiez cette valeur selon votre besoin de vitesse
+            player.style.left = positionX + 'px';
+        }
+
+        function moveLeft() {
+            positionX -= 10; // Modifiez cette valeur selon votre besoin de vitesse
+            player.style.left = positionX + 'px';
+        }
+
+        var rectWidth = 200; // Largeur du rectangle
+        var rectHeight = 10; // Hauteur du rectangle
+        var positionX = gameBoard.offsetWidth / 2 - playerImg.offsetWidth / 2;
+
+        function movePlayer(direction) {
+            switch (direction) {
+                case "left":
+                    positionX -= stepSize; // déplacer à gauche
+                    break;
+                case "right":
+                    positionX += stepSize; // déplacer à droite
+                    break;
+            }
+
+            positionX = Math.max(0, Math.min(positionX, gameBoard.offsetWidth - playerImg.offsetWidth));
+
+            player.style.left = positionX + "px";
+        }
+
+        document.addEventListener("keydown", function(event) {
+            switch (event.key) {
+                case "ArrowLeft":
+                    movePlayer("left");
+                    break;
+                case "ArrowRight":
+                    movePlayer("right");
+                    break;
+            }
+        });
+
+        function createHaie() {
+            var haie = document.createElement("img");
+            haie.classList.add("haie");
+            haie.src = "haie.png"; // chemin vers l'image de haie
+
+            var randomX = Math.floor(Math.random() * (gameBoard.offsetWidth - rectWidth));
+            haie.style.left = randomX + "px";
+
+            haie.style.animation = "descend 4s linear";
+
+            haie.addEventListener("animationend", function() {
+                haie.remove();
+                setTimeout(createHaie, 3000);
+            });
+
+            gameBoard.appendChild(haie);
+        }
+
+        createHaie();
+
+        setInterval(checkCollision, 100);
+
+        function checkCollision() {
+            var playerRect = playerImg.getBoundingClientRect();
+            var haies = document.querySelectorAll('.haie');
+
+            haies.forEach(function(haie) {
+                var haieRect = haie.getBoundingClientRect();
+                if (playerRect.left < haieRect.right &&
+                    playerRect.right > haieRect.left &&
+                    playerRect.top < haieRect.bottom &&
+                    playerRect.bottom > haieRect.top) {
+                    redirectToPage("collision.html");
+                }
+            });
+        }
+
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
